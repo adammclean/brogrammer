@@ -1,5 +1,9 @@
 class ArticlesController < ApplicationController
 
+  def index
+    @articles=Article.all
+  end
+
   def show
     @article = Article.find(params[:id])
   end
@@ -8,10 +12,16 @@ class ArticlesController < ApplicationController
 
   end
 
+
+  #The render method is used so that the @article object is passed back to the new template when it is rendered.
   def create
     @article = Article.new(article_params)
-    @article.save
-    redirect_to @article
+
+    if @article.save
+      redirect_to @article
+    else
+      render 'new'
+    end
   end
 
 
