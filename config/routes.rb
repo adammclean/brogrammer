@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
 
-  get 'users/new'
+
 
   #This creates comments as a nested resource within articles.
 
-  resources :articles do
-    resources :comments
+  resources :users do
+    resources :articles do
+      resources :comments
+    end
   end
+  # root 'welcome#index'
 
-  root 'welcome#index'
-
+  #get "sign_up" => "users#new", :as => "sign_up"
+  root :to =>"users#new"
 
 
   # The priority is based upon order of creation: first created -> highest priority.
