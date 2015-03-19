@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'users/new'
+
   #This creates comments as a nested resource within articles.
 
   resources :articles do
